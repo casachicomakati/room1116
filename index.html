@@ -2,1496 +2,519 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Room 1116 — Casa Chico Makati</title>
-  <meta name="theme-color" content="#1d1d1f">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Room 1116 — Blanc Zen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg: #f5f5f7;
+      --bg: #fafaf8;
+      --white: #ffffff;
       --surface: #ffffff;
-      --headline: #1d1d1f;
-      --body: #6e6e73;
-      --subtle: #86868b;
-      --divider: #d2d2d7;
-      --blue: #0071e3;
-      --blue-hover: #0077ed;
-      --green: #34c759;
-      --red: #ff3b30;
-      --orange: #ff9500;
-      --radius-lg: 20px;
-      --radius-md: 14px;
+      --stone: #e8e0d5;
+      --stone-2: #f0ebe4;
+      --sage: #6b8f71;
+      --sage-light: rgba(107,143,113,0.09);
+      --sage-border: rgba(107,143,113,0.22);
+      --text: #1a1a1a;
+      --text-dim: #5a5a5a;
+      --text-muted: #9a9a9a;
+      --border: #e8e0d5;
+      --red: #c0392b;
+      --radius: 18px;
       --radius-sm: 10px;
-      --shadow-card: 0 2px 20px rgba(0,0,0,0.07);
-      --shadow-elevated: 0 8px 40px rgba(0,0,0,0.12);
-      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+      --shadow-sm: 0 1px 8px rgba(0,0,0,0.05);
+      --shadow: 0 4px 24px rgba(0,0,0,0.07);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.1);
+      --ease: cubic-bezier(0.25,0.46,0.45,0.94);
+      --ease-out: cubic-bezier(0.16,1,0.3,1);
     }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; -webkit-font-smoothing: antialiased; }
 
-    body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--headline);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
-      padding-bottom: 90px;
-    }
+    .hero { background: var(--white); text-align: center; padding: 80px 24px 60px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(107,143,113,0.05) 0%, transparent 70%); pointer-events: none; }
+    .hero-eyebrow { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sage); margin-bottom: 20px; animation: zenFade 1s var(--ease-out) both; }
+    .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 11vw, 96px); font-weight: 300; color: var(--text); letter-spacing: -0.01em; line-height: 1.0; animation: zenFade 1s var(--ease-out) 0.1s both; }
+    .hero-rule { width: 48px; height: 1px; background: var(--sage); margin: 22px auto; animation: zenFade 1s var(--ease-out) 0.2s both; }
+    .hero p { font-size: 14px; font-weight: 300; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; animation: zenFade 1s var(--ease-out) 0.3s both; }
+    .hero-pills { display: flex; gap: 10px; margin-top: 26px; flex-wrap: wrap; justify-content: center; animation: zenFade 1s var(--ease-out) 0.4s both; }
+    .hero-pill { background: var(--stone-2); border: 1px solid var(--stone); color: var(--text-dim); font-size: 11px; font-weight: 500; padding: 6px 16px; border-radius: 100px; letter-spacing: 0.06em; text-transform: uppercase; }
+    @keyframes zenFade { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* ── Scroll animations ─────────────────────────────────── */
-    .card, .animate-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition:
-        opacity 0.6s var(--ease),
-        transform 0.6s var(--ease);
-    }
-    .card.in-view, .animate-in.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .card:nth-child(1) { transition-delay: 0ms; }
-    .card:nth-child(2) { transition-delay: 80ms; }
-    .card:nth-child(3) { transition-delay: 160ms; }
-    .card:nth-child(4) { transition-delay: 240ms; }
-    .card:nth-child(5) { transition-delay: 320ms; }
-    .card:nth-child(6) { transition-delay: 400ms; }
+    .container { max-width: 680px; margin: 0 auto; padding: 0 20px 120px; }
 
-    /* ── Section ───────────────────────────────────────────── */
+    .quick-bar { display: flex; gap: 12px; padding: 28px 0 20px; overflow-x: auto; scrollbar-width: none; }
+    .quick-bar::-webkit-scrollbar { display: none; }
+    .quick-item { flex: 1; min-width: 90px; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 12px; text-align: center; box-shadow: var(--shadow-sm); transition: box-shadow 0.3s, transform 0.3s; }
+    .quick-item:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+    .qi-icon { font-size: 22px; display: block; margin-bottom: 8px; }
+    .qi-label { font-size: 9px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.14em; }
+    .qi-val { font-size: 15px; font-weight: 500; color: var(--text); margin-top: 4px; font-family: 'Cormorant Garamond', serif; }
+
+    .nav-tabs { display: flex; gap: 6px; overflow-x: auto; padding: 10px 20px 16px; scrollbar-width: none; position: sticky; top: 0; z-index: 100; background: linear-gradient(to bottom, var(--bg) 82%, transparent); margin: 0 -20px; }
+    .nav-tabs::-webkit-scrollbar { display: none; }
+    .nav-tab { flex-shrink: 0; background: var(--white); border: 1px solid var(--border); border-radius: 100px; padding: 8px 18px; font-size: 12px; font-weight: 500; color: var(--text-dim); cursor: pointer; white-space: nowrap; transition: all 0.25s var(--ease); font-family: 'Inter', sans-serif; letter-spacing: 0.02em; box-shadow: var(--shadow-sm); }
+    .nav-tab:hover { border-color: var(--sage-border); color: var(--text); box-shadow: var(--shadow); }
+    .nav-tab.active { background: var(--sage); border-color: var(--sage); color: #fff; font-weight: 600; box-shadow: 0 2px 12px rgba(107,143,113,0.3); }
+
     .section { display: none; }
     .section.visible { display: block; }
 
-    /* ── Sticky Top Nav ────────────────────────────────────── */
-    .top-nav {
-      position: sticky;
-      top: 0;
-      z-index: 200;
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      background: rgba(255,255,255,0.85);
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-    }
-    .top-nav-inner {
-      max-width: 540px;
-      margin: 0 auto;
-      padding: 0 16px;
-      display: flex;
-      gap: 0;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-    }
-    .top-nav-inner::-webkit-scrollbar { display: none; }
-    .nav-tab {
-      flex-shrink: 0;
-      border: none;
-      background: none;
-      font-family: var(--font);
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--body);
-      padding: 14px 14px;
-      cursor: pointer;
-      white-space: nowrap;
-      letter-spacing: -0.1px;
-      position: relative;
-      transition: color 0.2s var(--ease);
-    }
-    .nav-tab::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 14px; right: 14px;
-      height: 2px;
-      background: var(--blue);
-      border-radius: 1px;
-      transform: scaleX(0);
-      transition: transform 0.25s var(--ease);
-    }
-    .nav-tab.active { color: var(--blue); }
-    .nav-tab.active::after { transform: scaleX(1); }
-    .nav-tab:hover:not(.active) { color: var(--headline); }
+    .card { background: var(--white); border-radius: var(--radius); padding: 28px 24px; margin-bottom: 14px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); opacity: 0; transform: translateY(20px); transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out), box-shadow 0.3s; }
+    .card.in-view { opacity: 1; transform: translateY(0); }
+    .card:hover { box-shadow: var(--shadow); }
+    .card:nth-child(1) { transition-delay: 0ms; }
+    .card:nth-child(2) { transition-delay: 70ms; }
+    .card:nth-child(3) { transition-delay: 140ms; }
+    .card:nth-child(4) { transition-delay: 210ms; }
+    .card:nth-child(5) { transition-delay: 280ms; }
+    .card-warm { background: linear-gradient(135deg, #fdf8f2, #f8f2ea); border-left: 3px solid #c9a24488; }
+    .card-title { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 400; color: var(--text); letter-spacing: 0.01em; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
 
-    /* ── Hero ──────────────────────────────────────────────── */
-    .hero {
-      position: relative;
-      background: #1d1d1f;
-      padding: 64px 24px 80px;
-      text-align: center;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 30% 50%, rgba(0, 113, 227, 0.15) 0%, transparent 60%),
-        radial-gradient(ellipse at 70% 20%, rgba(52, 199, 89, 0.08) 0%, transparent 50%);
-    }
-    .hero-eyebrow {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 16px;
-      position: relative;
-      opacity: 0;
-      animation: heroFadeUp 0.8s var(--ease) 0.1s forwards;
-    }
-    .hero h1 {
-      font-size: clamp(40px, 10vw, 72px);
-      font-weight: 700;
-      letter-spacing: -2px;
-      color: #f5f5f7;
-      line-height: 1.05;
-      position: relative;
-      opacity: 0;
-      animation: heroFadeUp 0.8s var(--ease) 0.25s forwards;
-    }
-    .hero h1 span { color: #0071e3; }
-    .hero-sub {
-      font-size: 17px;
-      color: rgba(255,255,255,0.6);
-      margin-top: 12px;
-      font-weight: 400;
-      letter-spacing: -0.3px;
-      position: relative;
-      opacity: 0;
-      animation: heroFadeUp 0.8s var(--ease) 0.4s forwards;
-    }
-    .hero-pills {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 24px;
-      position: relative;
-      opacity: 0;
-      animation: heroFadeUp 0.8s var(--ease) 0.55s forwards;
-    }
-    .hero-pill {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 100px;
-      padding: 7px 16px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.8);
-      letter-spacing: -0.1px;
-      backdrop-filter: blur(10px);
-    }
-    .hero-pill strong { color: #fff; font-weight: 600; }
-    @keyframes heroFadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .hero-curve {
-      position: absolute;
-      bottom: -1px; left: 0; right: 0;
-      height: 40px;
-    }
-    .hero-curve svg { width: 100%; height: 100%; display: block; }
-
-    /* ── Quick Bar ─────────────────────────────────────────── */
-    .quick-bar {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      max-width: 540px;
-      margin: 0 auto;
-      padding: 20px 16px 0;
-    }
-    .quick-item {
-      background: var(--surface);
-      border-radius: var(--radius-md);
-      padding: 16px 10px;
-      text-align: center;
-      box-shadow: var(--shadow-card);
-    }
-    .qi-icon { font-size: 22px; display: block; margin-bottom: 6px; }
-    .qi-label { font-size: 10px; color: var(--subtle); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; }
-    .qi-val { font-size: 14px; font-weight: 600; color: var(--headline); margin-top: 3px; }
-
-    /* ── Container ─────────────────────────────────────────── */
-    .container {
-      max-width: 540px;
-      margin: 0 auto;
-      padding: 24px 16px 24px;
-    }
-
-    /* ── Cards ─────────────────────────────────────────────── */
-    .card {
-      background: var(--surface);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      margin-bottom: 14px;
-      box-shadow: var(--shadow-card);
-    }
-    .card-accent {
-      background: linear-gradient(135deg, #fff9f0, #fff5e6);
-      border: 1px solid rgba(255, 149, 0, 0.2);
-    }
-    .card-blue {
-      background: linear-gradient(135deg, #f0f7ff, #e8f2ff);
-      border: 1px solid rgba(0, 113, 227, 0.15);
-    }
-    .card-title {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--subtle);
-      margin-bottom: 18px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .card-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--divider);
-    }
-
-    /* ── Info Rows ─────────────────────────────────────────── */
-    .info-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 14px 0;
-      border-bottom: 1px solid #f0f0f3;
-    }
+    .info-row { display: flex; align-items: flex-start; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--border); }
     .info-row:last-child { border-bottom: none; padding-bottom: 0; }
-    .info-icon {
-      font-size: 20px;
-      flex-shrink: 0;
-      margin-top: 2px;
-      width: 36px;
-      height: 36px;
-      background: #f5f5f7;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .info-label { font-size: 11px; color: var(--subtle); margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.7px; font-weight: 600; }
-    .info-val { font-size: 15px; font-weight: 500; color: var(--headline); line-height: 1.5; }
-    .info-val.code {
-      font-family: 'SF Mono', 'Menlo', 'Courier New', monospace;
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--blue);
-      letter-spacing: 3px;
-    }
+    .info-row:first-child { padding-top: 0; }
+    .info-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+    .info-label { font-size: 10px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 4px; }
+    .info-val { font-size: 14px; font-weight: 400; color: var(--text); line-height: 1.65; }
 
-    /* ── Step List ─────────────────────────────────────────── */
-    .step-list { counter-reset: steps; }
-    .step {
-      display: flex;
-      gap: 14px;
-      padding: 14px 0;
-      border-bottom: 1px solid #f0f0f3;
-      align-items: flex-start;
-    }
+    .step-list { display: flex; flex-direction: column; }
+    .step { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
     .step:last-child { border-bottom: none; }
-    .step-num {
-      counter-increment: steps;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: var(--blue);
-      color: #fff;
-      font-size: 13px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .step-num::before { content: counter(steps); }
-    .step-text { font-size: 14px; padding-top: 5px; }
-    .step-text strong { font-weight: 600; display: block; margin-bottom: 3px; color: var(--headline); }
-    .step-text span { color: var(--body); font-size: 13px; line-height: 1.6; }
+    .step-num { width: 28px; height: 28px; min-width: 28px; border-radius: 50%; background: var(--sage); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; flex-shrink: 0; font-family: 'Inter', sans-serif; }
+    .step-text { font-size: 14px; color: var(--text-dim); }
+    .step-text strong { font-size: 14px; font-weight: 600; color: var(--text); display: block; margin-bottom: 4px; }
 
-    /* ── Accordion ─────────────────────────────────────────── */
-    .accordion-item { border-bottom: 1px solid #f0f0f3; }
+    .accordion-item { border-bottom: 1px solid var(--border); }
     .accordion-item:last-child { border-bottom: none; }
-    .accordion-trigger {
-      width: 100%;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 0;
-      cursor: pointer;
-      text-align: left;
-      gap: 12px;
-      font-family: var(--font);
-    }
-    .accordion-trigger-left { display: flex; align-items: center; gap: 12px; }
-    .acc-icon {
-      font-size: 18px;
-      width: 34px;
-      height: 34px;
-      background: #f5f5f7;
-      border-radius: 9px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .acc-label { font-size: 15px; font-weight: 500; color: var(--headline); }
-    .acc-arrow {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: #f0f0f3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--subtle);
-      font-size: 10px;
-      flex-shrink: 0;
-      transition: transform 0.3s var(--ease), background 0.2s;
-    }
-    .accordion-item.open .acc-arrow { transform: rotate(180deg); background: var(--blue); color: #fff; }
-    .accordion-body {
-      display: none;
-      padding: 4px 0 18px 46px;
-      font-size: 14px;
-      color: var(--body);
-      line-height: 1.75;
-    }
-    .accordion-item.open .accordion-body { display: block; }
+    .accordion-trigger { display: flex; justify-content: space-between; align-items: center; width: 100%; background: none; border: none; cursor: pointer; padding: 15px 0; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; color: var(--text-dim); transition: color 0.2s; }
+    .accordion-trigger:hover { color: var(--text); }
+    .accordion-trigger[aria-expanded="true"] { color: var(--sage); }
+    .accordion-trigger-left { display: flex; align-items: center; gap: 10px; }
+    .acc-icon { font-size: 16px; }
+    .acc-label { font-size: 14px; font-weight: 500; }
+    .acc-toggle { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px; color: var(--text-muted); transition: all 0.25s var(--ease); }
+    .accordion-trigger[aria-expanded="true"] .acc-toggle { background: var(--sage); border-color: var(--sage); color: #fff; transform: rotate(45deg); }
+    .accordion-body { overflow: hidden; max-height: 0; transition: max-height 0.4s var(--ease-out); font-size: 14px; color: var(--text-dim); line-height: 1.8; }
+    .accordion-body.open { max-height: 1200px; }
+    .accordion-body-inner { padding: 4px 0 16px; }
 
-    /* ── Rules Grid ────────────────────────────────────────── */
-    .rules-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-    .rule-tag {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: #f5f5f7;
-      border-radius: var(--radius-sm);
-      padding: 12px 12px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--headline);
-    }
-    .rule-tag.allowed { border-left: 3px solid var(--green); }
-    .rule-tag.disallowed { border-left: 3px solid var(--red); }
-    .rt-icon { font-size: 17px; flex-shrink: 0; }
+    .rules-grid { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px; }
+    .rule-tag { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: var(--radius-sm); font-size: 12px; font-weight: 500; }
+    .allowed { background: rgba(52,199,89,0.07); color: #1a7a35; border: 1px solid rgba(52,199,89,0.2); }
+    .disallowed { background: rgba(192,57,43,0.06); color: #c0392b; border: 1px solid rgba(192,57,43,0.18); }
 
-    /* ── Contact Cards ─────────────────────────────────────── */
-    .contact-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 0;
-      border-bottom: 1px solid #f0f0f3;
-    }
-    .contact-card:last-child { border-bottom: none; }
-    .contact-left { display: flex; align-items: center; gap: 12px; }
-    .contact-avatar {
-      width: 46px; height: 46px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #e3f0ff, #c8e2ff);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      flex-shrink: 0;
-    }
-    .contact-name { font-size: 15px; font-weight: 600; color: var(--headline); }
-    .contact-role { font-size: 12px; color: var(--subtle); margin-top: 1px; }
-    .contact-actions { display: flex; gap: 8px; }
-    .contact-btn {
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 17px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s var(--ease);
-    }
-    .contact-btn:hover { transform: scale(1.1); }
-    .contact-btn:active { transform: scale(0.92); }
-    .btn-call { background: var(--green); color: white; }
-    .btn-msg { background: #f0f0f3; }
+    .copy-wrap { display: inline-flex; align-items: center; gap: 6px; }
+    .copy-btn { font-size: 11px; font-weight: 600; color: var(--sage); background: var(--sage-light); border: 1px solid var(--sage-border); border-radius: 100px; padding: 2px 10px; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.2s; }
+    .copy-btn:hover { background: var(--sage); color: #fff; }
+    .copy-toast { display: none; font-size: 11px; color: var(--sage); font-weight: 600; }
 
-    /* ── Map Placeholder ───────────────────────────────────── */
-    .map-placeholder {
-      background: linear-gradient(135deg, #e3f0ff, #d0e8ff);
-      border-radius: var(--radius-md);
-      height: 140px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 14px;
-      color: var(--blue);
-      font-weight: 500;
-      margin-bottom: 20px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s var(--ease);
-      border: 1px solid rgba(0,113,227,0.15);
-    }
-    .map-placeholder:hover { transform: scale(1.01); box-shadow: var(--shadow-elevated); }
-    .map-placeholder span:first-child { font-size: 32px; }
-
-    /* ── Place Items ───────────────────────────────────────── */
-    .place-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 0;
-      border-bottom: 1px solid #f0f0f3;
-    }
+    .place-item { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--border); }
     .place-item:last-child { border-bottom: none; }
-    .place-icon {
-      font-size: 18px;
-      width: 34px;
-      height: 34px;
-      background: #f5f5f7;
-      border-radius: 9px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
+    .place-icon { font-size: 18px; flex-shrink: 0; }
     .place-info { flex: 1; }
-    .place-name { font-size: 14px; font-weight: 500; color: var(--headline); }
-    .place-meta { font-size: 12px; color: var(--subtle); margin-top: 1px; }
-    .place-dist {
-      font-size: 11px;
-      background: #f5f5f7;
-      color: var(--body);
-      padding: 4px 10px;
-      border-radius: 100px;
-      flex-shrink: 0;
-      font-weight: 600;
-    }
+    .place-name { font-size: 14px; font-weight: 500; color: var(--text); }
+    .place-meta { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .place-dist { font-size: 12px; font-weight: 600; color: var(--sage); white-space: nowrap; }
 
-    /* ── CTA Button ────────────────────────────────────────── */
-    .cta-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      padding: 16px;
-      border-radius: var(--radius-sm);
-      border: none;
-      font-family: var(--font);
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: -0.2px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s var(--ease);
-      margin-top: 12px;
-    }
-    .cta-btn:active { transform: scale(0.98); }
-    .cta-primary { background: var(--blue); color: #fff; }
-    .cta-primary:hover { background: var(--blue-hover); }
-    .cta-gold { background: #ff9500; color: #fff; }
-    .cta-gold:hover { background: #e68900; }
-    .cta-outline { background: #f5f5f7; color: var(--headline); }
-    .cta-outline:hover { background: #ebebeb; }
+    .map-link { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px; border-radius: var(--radius-sm); background: var(--sage-light); border: 1px solid var(--sage-border); color: var(--sage); font-weight: 500; font-size: 14px; text-decoration: none; margin-bottom: 14px; transition: all 0.2s; }
+    .map-link:hover { background: var(--sage); color: #fff; }
 
-    /* ── Copy Button ───────────────────────────────────────── */
-    .copy-wrap { position: relative; display: inline-flex; align-items: center; }
-    .copy-btn {
-      background: #f0f0f3;
-      border: 1px solid var(--divider);
-      border-radius: 7px;
-      padding: 5px 12px;
-      font-size: 12px;
-      font-family: var(--font);
-      font-weight: 600;
-      cursor: pointer;
-      margin-left: 10px;
-      color: var(--blue);
-      transition: all 0.2s var(--ease);
-    }
-    .copy-btn:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
-    .copy-toast {
-      position: absolute;
-      top: -34px; left: 50%;
-      transform: translateX(-50%);
-      background: var(--headline);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 600;
-      padding: 5px 10px;
-      border-radius: 8px;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s;
-    }
-    .copy-toast.show { opacity: 1; }
+    .contact-card { display: flex; align-items: center; gap: 14px; padding: 15px 0; border-bottom: 1px solid var(--border); }
+    .contact-card:last-child { border-bottom: none; padding-bottom: 0; }
+    .contact-left { display: flex; align-items: center; gap: 14px; flex: 1; }
+    .contact-avatar { width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, #a8c5ab, var(--sage)); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .contact-name { font-size: 15px; font-weight: 600; color: var(--text); }
+    .contact-role { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .contact-actions { display: flex; gap: 8px; }
+    .contact-btn { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; font-size: 16px; text-decoration: none; border: 1px solid var(--border); background: var(--bg); box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s; }
+    .contact-btn:hover { transform: scale(1.1); box-shadow: var(--shadow); }
 
-    /* ── SOS Banner ────────────────────────────────────────── */
-    .sos-banner {
-      background: linear-gradient(135deg, #fff2f0, #ffe8e5);
-      border: 1px solid rgba(255,59,48,0.2);
-      border-radius: var(--radius-lg);
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 14px;
-      text-decoration: none;
-      transition: all 0.3s var(--ease);
-    }
-    .sos-banner:hover { transform: scale(1.01); box-shadow: 0 4px 20px rgba(255,59,48,0.15); }
-    .sos-icon { font-size: 30px; }
-    .sos-title { font-size: 15px; font-weight: 700; color: var(--red); }
-    .sos-sub { font-size: 12px; color: #c0392b; margin-top: 2px; }
+    .cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--sage); color: #fff; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 12px 26px; border-radius: 100px; border: none; cursor: pointer; text-decoration: none; transition: all 0.25s var(--ease); margin-right: 8px; margin-top: 4px; box-shadow: 0 2px 12px rgba(107,143,113,0.25); }
+    .cta-btn:hover { background: #5a7d60; transform: scale(1.02); }
+    .cta-teal { background: #3a9fb5; box-shadow: 0 2px 12px rgba(58,159,181,0.25); }
+    .cta-teal:hover { background: #3090a5; }
 
-    /* ── Reminder Card ─────────────────────────────────────── */
-    .reminder-card {
-      background: linear-gradient(135deg, #fff9f0, #fff5e6);
-      border: 1px solid rgba(255,149,0,0.2);
-      border-left: 4px solid var(--orange);
-      border-radius: var(--radius-lg);
-      padding: 20px 20px;
-      margin-bottom: 14px;
-    }
-    .reminder-card .card-title { color: #a05c00; }
-    .reminder-card p { font-size: 14px; color: #6b4400; line-height: 1.75; }
+    .sos-banner { display: flex; align-items: center; gap: 14px; background: linear-gradient(135deg, #c0392b, #e74c3c); padding: 16px 20px; border-radius: var(--radius); text-decoration: none; margin-bottom: 14px; box-shadow: 0 4px 16px rgba(192,57,43,0.2); transition: opacity 0.2s, transform 0.2s; }
+    .sos-banner:hover { opacity: 0.92; transform: scale(1.01); }
+    .sos-icon { font-size: 26px; }
+    .sos-title { font-size: 15px; font-weight: 600; color: #fff; }
+    .sos-sub { font-size: 12px; color: rgba(255,255,255,0.78); margin-top: 2px; }
 
-    /* ── Checklist ─────────────────────────────────────────── */
-    .checklist-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 0;
-      border-bottom: 1px solid #f0f0f3;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
+    .checklist-item { display: flex; align-items: center; gap: 13px; padding: 12px 0; border-bottom: 1px solid var(--border); cursor: pointer; transition: opacity 0.2s; }
     .checklist-item:last-child { border-bottom: none; }
-    .check-box {
-      width: 24px; height: 24px;
-      border-radius: 7px;
-      border: 2px solid var(--divider);
-      background: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: all 0.25s var(--ease);
-    }
-    .checklist-item.done .check-box {
-      background: var(--blue);
-      border-color: var(--blue);
-    }
-    .checklist-item.done .check-box::after {
-      content: '✓';
-      color: white;
-      font-size: 13px;
-      font-weight: 700;
-    }
-    .checklist-item.done .check-label {
-      text-decoration: line-through;
-      color: var(--subtle);
-    }
-    .check-label { font-size: 14px; color: var(--headline); }
+    .checklist-item.done { opacity: 0.38; }
+    .checklist-item.done .check-label { text-decoration: line-through; }
+    .checklist-item input[type="checkbox"] { display: none; }
+    .check-box { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid var(--border); background: transparent; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+    .checklist-item.done .check-box { background: var(--sage); border-color: var(--sage); }
+    .checklist-item.done .check-box::after { content: '✓'; font-size: 11px; color: #fff; font-weight: 700; }
+    .check-label { font-size: 14px; color: var(--text-dim); }
+    .checklist-progress { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
 
-    /* ── Progress Bar ──────────────────────────────────────── */
-    .progress-wrap {
-      margin-top: 18px;
-    }
-    .progress-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: var(--subtle);
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-    .progress-track {
-      height: 4px;
-      background: #f0f0f3;
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .progress-fill {
-      height: 100%;
-      background: var(--blue);
-      border-radius: 2px;
-      transition: width 0.4s var(--ease);
-    }
-    .progress-complete {
-      text-align: center;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--green);
-      padding: 8px 0 4px;
+    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-top: 1px solid var(--border); padding: 8px 8px max(env(safe-area-inset-bottom), 8px); display: flex; gap: 4px; z-index: 200; }
+    .bn-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 8px 4px; border: none; background: none; border-radius: var(--radius-sm); cursor: pointer; font-family: 'Inter', sans-serif; color: var(--text-muted); font-size: 10px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; transition: all 0.2s; }
+    .bn-item:hover { color: var(--text); }
+    .bn-item.active { color: var(--sage); }
+    .bn-icon { font-size: 20px; width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+    .bn-item.active .bn-icon { background: var(--sage-light); }
+
+    @media (max-width: 480px) {
+      .hero { padding: 70px 20px 50px; }
+      .card { padding: 22px 18px; }
+      .container { padding-bottom: 110px; }
     }
 
-    /* ── Bottom Nav ────────────────────────────────────────── */
-    .bottom-nav {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      background: rgba(255,255,255,0.85);
-      border-top: 1px solid rgba(0,0,0,0.08);
-      display: flex;
-      justify-content: space-around;
-      padding: 8px 0 env(safe-area-inset-bottom, 8px);
-      z-index: 200;
-    }
-    .bn-item {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-      cursor: pointer;
-      padding: 4px;
-      border-radius: 12px;
-      font-family: var(--font);
-      font-size: 10px;
-      font-weight: 500;
-      color: var(--subtle);
-      border: none;
-      background: none;
-      transition: color 0.2s var(--ease);
-    }
-    .bn-item .bn-icon { font-size: 22px; line-height: 1; }
-    .bn-item.active { color: var(--blue); }
-
-    /* ── Badge ─────────────────────────────────────────────── */
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 100px;
-    }
-    .badge-green { background: #e8f8ec; color: #1a7a35; }
-    .badge-red { background: #fee8e7; color: #c0392b; }
-
-    /* ── Section transition ────────────────────────────────── */
-    .section { transition: opacity 0.25s var(--ease), transform 0.25s var(--ease); }
-
-    /* ── Divider ───────────────────────────────────────────── */
-    .section-divider {
-      height: 1px;
-      background: var(--divider);
-      margin: 4px 0 20px;
-      opacity: 0.5;
-    }
-
-    @media (min-width: 540px) {
-      .hero { padding: 80px 32px 100px; }
-      .hero h1 { letter-spacing: -3px; }
-    }
+    #loadingScreen { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; flex-direction: column; background: #fafaf8; transition: opacity 0.7s var(--ease), visibility 0.7s; }
+    #loadingScreen.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loading-icons { display: flex; gap: 22px; justify-content: center; margin-bottom: 30px; }
+    .l-icon { font-size: 34px; display: inline-block; animation: iconFloat 1.8s ease-in-out infinite; }
+    .l-icon:nth-child(1) { animation-delay: 0s; }
+    .l-icon:nth-child(2) { animation-delay: 0.22s; }
+    .l-icon:nth-child(3) { animation-delay: 0.44s; }
+    .l-icon:nth-child(4) { animation-delay: 0.66s; }
+    @keyframes iconFloat { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-13px) scale(1.08); } }
+    .loading-text { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-weight: 400; font-style: italic; letter-spacing: 0.18em; color: #6b8f71; }
+    .loading-dots { display: flex; gap: 6px; justify-content: center; margin-top: 14px; }
+    .loading-dots span { width: 5px; height: 5px; border-radius: 50%; background: #6b8f71; animation: dotPulse 1.4s ease-in-out infinite; }
+    .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes dotPulse { 0%, 80%, 100% { transform: scale(0.5); opacity: 0.22; } 40% { transform: scale(1); opacity: 1; } }
   </style>
 </head>
 <body>
 
-<!-- ── HERO ───────────────────────────────────────────────── -->
+<div id="loadingScreen">
+  <div class="loading-icons">
+    <span class="l-icon">🛏️</span>
+    <span class="l-icon">💡</span>
+    <span class="l-icon">🚗</span>
+    <span class="l-icon">✈️</span>
+  </div>
+  <div class="loading-text">loading guidebook</div>
+  <div class="loading-dots"><span></span><span></span><span></span></div>
+</div>
+
 <div class="hero">
-  <div class="hero-eyebrow">Air Residences · Makati</div>
-  <h1>Room<br><span>1116</span></h1>
-  <p class="hero-sub">Everything you need for a perfect stay</p>
+  <div class="hero-eyebrow">Air Residences · Makati · Philippines</div>
+  <h1>Room 1116</h1>
+  <div class="hero-rule"></div>
+  <p>Your guide to a perfect stay</p>
   <div class="hero-pills">
-    <div class="hero-pill">🔑 Check-in <strong>3:00 PM</strong></div>
-    <div class="hero-pill">🧳 Check-out <strong>12:00 PM</strong></div>
-    <div class="hero-pill">👥 Up to <strong>3 Guests</strong></div>
-  </div>
-  <div class="hero-curve">
-    <svg viewBox="0 0 375 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 40 Q187.5 0 375 40 L375 40 L0 40 Z" fill="#f5f5f7"/>
-    </svg>
+    <span class="hero-pill">Check-in 3:00 PM</span>
+    <span class="hero-pill">Check-out 12:00 PM</span>
+    <span class="hero-pill">Up to 3 Guests</span>
   </div>
 </div>
 
-<!-- ── STICKY NAV ──────────────────────────────────────────── -->
-<div class="top-nav">
-  <div class="top-nav-inner" id="navTabs">
-    <button class="nav-tab active" onclick="showSection('arrival')" data-tab="arrival">🔑 Arrival</button>
-    <button class="nav-tab" onclick="showSection('home')" data-tab="home">🏠 Home</button>
-    <button class="nav-tab" onclick="showSection('wifi')" data-tab="wifi">📶 Wi-Fi</button>
-    <button class="nav-tab" onclick="showSection('rules')" data-tab="rules">📋 Rules</button>
-    <button class="nav-tab" onclick="showSection('neighborhood')" data-tab="neighborhood">📍 Area</button>
-    <button class="nav-tab" onclick="showSection('contact')" data-tab="contact">💬 Contact</button>
-    <button class="nav-tab" onclick="showSection('checkout')" data-tab="checkout">🧳 Check-out</button>
-  </div>
-</div>
-
-<!-- ── CONTAINER ──────────────────────────────────────────── -->
 <div class="container">
 
-  <!-- ── ARRIVAL ──────────────────────────────────────────── -->
+  <div class="quick-bar">
+    <div class="quick-item"><span class="qi-icon">🔑</span><div class="qi-label">Check-in</div><div class="qi-val">3:00 PM</div></div>
+    <div class="quick-item"><span class="qi-icon">🧳</span><div class="qi-label">Check-out</div><div class="qi-val">12:00 PM</div></div>
+    <div class="quick-item"><span class="qi-icon">👥</span><div class="qi-label">Guests</div><div class="qi-val">Up to 3</div></div>
+  </div>
+
+  <div class="nav-tabs" id="navTabs">
+    <button class="nav-tab active" onclick="showSection('arrival')">🔑 Arrival</button>
+    <button class="nav-tab" onclick="showSection('home')">🏠 Home Guide</button>
+    <button class="nav-tab" onclick="showSection('wifi')">📶 Wi-Fi</button>
+    <button class="nav-tab" onclick="showSection('rules')">📋 Rules</button>
+    <button class="nav-tab" onclick="showSection('neighborhood')">📍 Area</button>
+    <button class="nav-tab" onclick="showSection('contact')">💬 Contact</button>
+    <button class="nav-tab" onclick="showSection('checkout')">🧳 Check-out</button>
+  </div>
+
+  <!-- ARRIVAL -->
   <div class="section visible" id="sec-arrival">
-
     <div class="card">
-      <div class="card-title">🏠 Your Address</div>
-      <div class="info-row">
-        <div class="info-icon">📍</div>
-        <div>
-          <div class="info-label">Property Address</div>
-          <div class="info-val">Room 1116<br>Air Residences, Malugay Street,<br>Brgy. San Antonio, Makati, Philippines</div>
-        </div>
-      </div>
-      <a href="https://maps.app.goo.gl/ppBcCAhrwm9eyZ5T6" class="cta-btn cta-primary">
-        🗺️ Open in Maps
-      </a>
+      <div class="card-title">Your Address</div>
+      <div class="info-row"><span class="info-icon">📍</span><div><div class="info-label">Property Address</div><div class="info-val">Room 1116<br>Air Residences, Malugay Street, Brgy. San Antonio, Makati, Philippines</div></div></div>
+      <a href="https://maps.app.goo.gl/ppBcCAhrwm9eyZ5T6" class="cta-btn cta-teal" style="margin-top:16px">🗺️ Open in Maps</a>
     </div>
-
-    <div class="reminder-card card animate-in">
-      <div class="card-title">🏢 Gentle Reminder</div>
-      <p>
-        This is <strong>NOT A HOTEL</strong> establishment. You are staying in a <strong>shared residential building</strong> with full-time residents who live here permanently.<br><br>
-        Kindly avoid storing or stacking garbage inside the unit, as this may attract pests and insects. Please dispose of trash regularly in the <strong>garbage room near the elevators</strong>.<br><br>
-        Thank you for helping maintain a clean and peaceful environment for everyone. 🙏
-      </p>
+    <div class="card card-warm">
+      <div class="card-title">Gentle Reminder</div>
+      <p style="font-size:14px;color:#7a5a30;line-height:1.85">This is <strong>NOT A HOTEL</strong> establishment. You are staying in a <strong>shared residential building</strong> with full-time residents who live here permanently.<br><br>Kindly avoid storing or stacking garbage inside the unit, as this may attract pests and insects. Please dispose of trash regularly in the <strong>garbage room near the elevators</strong>.<br><br>Thank you for helping maintain a clean and peaceful environment for everyone. 🙏</p>
     </div>
-
     <div class="card">
-      <div class="card-title">🔑 Key &amp; Entry</div>
-      <div class="info-row">
-        <div class="info-icon">📬</div>
-        <div>
-          <div class="info-label">Key Location</div>
-          <div class="info-val">Your key is inside the <strong>mailbox</strong> at the building entrance. Use it to unlock the unit door.</div>
-        </div>
-      </div>
-      <div class="info-row">
-        <div class="info-icon">🚪</div>
-        <div>
-          <div class="info-label">Entry Notes</div>
-          <div class="info-val">Retrieve the key from the mailbox, unlock the front door, and return the key to the mailbox when you check out.</div>
-        </div>
-      </div>
-      <div class="info-row">
-        <div class="info-icon">🅿️</div>
-        <div>
-          <div class="info-label">Parking</div>
-          <div class="info-val">Mall pay parking is available within the building. Rate: <strong>₱20/hour</strong>.</div>
-        </div>
-      </div>
+      <div class="card-title">Key &amp; Entry</div>
+      <div class="info-row"><span class="info-icon">📬</span><div><div class="info-label">Key Location</div><div class="info-val">Your key is inside the <strong>mailbox</strong> at the building entrance. Use it to unlock the unit door.</div></div></div>
+      <div class="info-row"><span class="info-icon">🚪</span><div><div class="info-label">Entry Notes</div><div class="info-val">Retrieve the key from the mailbox, unlock the front door, and return the key to the mailbox when you check out.</div></div></div>
+      <div class="info-row"><span class="info-icon">🅿️</span><div><div class="info-label">Parking</div><div class="info-val">Mall pay parking is available within the building. Rate: <strong>₱20/hour</strong>.</div></div></div>
     </div>
-
     <div class="card">
-      <div class="card-title">🚶 Step-by-Step Arrival</div>
+      <div class="card-title">Step-by-Step Arrival</div>
       <div class="step-list">
-        <div class="step">
-          <div class="step-num"></div>
-          <div class="step-text">
-            <strong>Getting here from the airport</strong>
-            <span>We recommend using <strong>Grab</strong> or <strong>InDrive</strong>. Set your destination to: <em>"Air Residences, Makati City, Metro Manila"</em></span>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num"></div>
-          <div class="step-text">
-            <strong>Register at the front desk</strong>
-            <span>Present your <strong>authorization form</strong> and a valid ID to the building lobby staff.</span>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num"></div>
-          <div class="step-text">
-            <strong>Pick up your keys</strong>
-            <span>Retrieve your key from inside the <strong>mailbox</strong>.</span>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num"></div>
-          <div class="step-text">
-            <strong>Proceed to the designated elevator</strong>
-            <span>Use the elevator assigned to your floor as directed by front desk staff.</span>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num"></div>
-          <div class="step-text">
-            <strong>Enjoy your stay! 🎉</strong>
-            <span>Make yourself at home — we hope you have a wonderful time at Casa Chico Makati.</span>
-          </div>
-        </div>
+        <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Getting here from the airport</strong>We recommend using <strong>Grab</strong> or <strong>InDrive</strong>. Set your destination to: <em>"Air Residences, Makati City, Metro Manila"</em></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Register at the front desk</strong>Present your <strong>authorization form</strong> and a valid ID to the building lobby staff.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Pick up your keys</strong>Retrieve your key from inside the <strong>mailbox</strong>.</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Proceed to the designated elevator</strong>Use the elevator assigned to your floor as directed by front desk staff.</div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Enjoy your stay! 🎉</strong>Make yourself at home — we hope you have a wonderful time at Casa Chico Makati.</div></div>
       </div>
     </div>
+  </div>
 
-  </div><!-- /sec-arrival -->
-
-  <!-- ── HOME GUIDE ────────────────────────────────────────── -->
+  <!-- HOME GUIDE -->
   <div class="section" id="sec-home">
-
-    <div class="reminder-card card animate-in">
-      <div class="card-title">🏢 Gentle Reminder</div>
-      <p>
-        This is <strong>NOT A HOTEL</strong> establishment. You are staying in a <strong>shared residential building</strong> with full-time residents who live here permanently.<br><br>
-        Kindly avoid storing or stacking garbage inside the unit, as this may attract pests and insects. Please dispose of trash regularly in the <strong>garbage room near the elevators</strong>.<br><br>
-        Thank you for helping maintain a clean and peaceful environment for everyone. 🙏
-      </p>
+    <div class="card card-warm">
+      <div class="card-title">Gentle Reminder</div>
+      <p style="font-size:14px;color:#7a5a30;line-height:1.85">This is <strong>NOT A HOTEL</strong> establishment. You are staying in a <strong>shared residential building</strong> with full-time residents who live here permanently.<br><br>Kindly avoid storing or stacking garbage inside the unit, as this may attract pests and insects. Please dispose of trash regularly in the <strong>garbage room near the elevators</strong>.<br><br>Thank you for helping maintain a clean and peaceful environment for everyone. 🙏</p>
     </div>
-
-    <div class="reminder-card card animate-in">
-      <div class="card-title">🛗 Elevator Notice</div>
-      <p>
-        Please be aware that this is a <strong>highly booked condominium on Airbnb</strong>, and the building is home to many full-time residents as well. As a result, <strong>elevators may take a while</strong> to reach your floor — especially during <strong>rush hours</strong> (mornings and evenings).<br><br>
-        We kindly ask that you <strong>plan ahead of time</strong> whenever you need to head out, so you can avoid any inconvenience or delays. Thank you for your patience and understanding! 🙏
-      </p>
+    <div class="card card-warm">
+      <div class="card-title">Elevator Notice</div>
+      <p style="font-size:14px;color:#7a5a30;line-height:1.85">Please be aware that this is a <strong>highly booked condominium on Airbnb</strong>, and the building is home to many full-time residents as well. As a result, <strong>elevators may take a while</strong> to reach your floor — especially during <strong>rush hours</strong> (mornings and evenings).<br><br>We kindly ask that you <strong>plan ahead of time</strong> whenever you need to head out, so you can avoid any inconvenience or delays. Thank you for your patience and understanding! 🙏</p>
     </div>
-
-    <div class="reminder-card card animate-in">
-      <div class="card-title">🌿 A Note on Shared Living</div>
-      <p>
-        As with most multi-unit residential buildings, our shared common areas — hallways, stairwells, and corridors — are used by many residents daily. Occasionally, an insect may find its way in, particularly during <strong>warmer months</strong>. This is completely normal for buildings of this nature.<br><br>
-        Please know that we take <strong>cleanliness very seriously</strong>. Your unit is thoroughly cleaned and sanitized before every stay, and we continuously do our best to ensure a fresh and comfortable environment for all our guests.<br><br>
-        If you ever notice anything that concerns you during your stay, please don't hesitate to <strong>reach out to us</strong> — we're always here and happy to help. We truly look forward to hosting you and making your stay as pleasant as possible! 🙏
-      </p>
+    <div class="card card-warm">
+      <div class="card-title">A Note on Shared Living</div>
+      <p style="font-size:14px;color:#7a5a30;line-height:1.85">As with most multi-unit residential buildings, our shared common areas — hallways, stairwells, and corridors — are used by many residents daily. Occasionally, an insect may find its way in, particularly during <strong>warmer months</strong>. This is completely normal for buildings of this nature.<br><br>Please know that we take <strong>cleanliness very seriously</strong>. Your unit is thoroughly cleaned and sanitized before every stay, and we continuously do our best to ensure a fresh and comfortable environment for all our guests.<br><br>If you ever notice anything that concerns you during your stay, please don't hesitate to <strong>reach out to us</strong> — we're always here and happy to help. We truly look forward to hosting you and making your stay as pleasant as possible! 🙏</p>
     </div>
-
     <div class="card">
-      <div class="card-title">🏠 Room by Room Guide</div>
-
+      <div class="card-title">Room by Room Guide</div>
       <div class="accordion-item open">
-        <button class="accordion-trigger" onclick="toggleAccordion(this)">
-          <div class="accordion-trigger-left">
-            <span class="acc-icon">🛋️</span>
-            <span class="acc-label">Living Room</span>
-          </div>
-          <span class="acc-arrow">▼</span>
-        </button>
-        <div class="accordion-body">
-          <strong>TV:</strong> Use the black remote. Netflix is already logged in and ready to use. If you find it has been logged out, just message us and we'll help you get back in.<br><br>
-          <strong>AC:</strong> Use the white remote. Recommended temperature is <strong>20°C</strong>.
-        </div>
+        <button class="accordion-trigger" onclick="toggleAccordion(this)" aria-expanded="true"><div class="accordion-trigger-left"><span class="acc-icon">🛋️</span><span class="acc-label">Living Room</span></div><span class="acc-toggle">+</span></button>
+        <div class="accordion-body open"><div class="accordion-body-inner"><strong style="color:var(--text)">TV:</strong> Use the black remote. Netflix is already logged in and ready to use. If you find it has been logged out, just message us and we'll help you get back in.<br><br><strong style="color:var(--text)">AC:</strong> Use the white remote. Recommended temperature is <strong>20°C</strong>.</div></div>
       </div>
-
       <div class="accordion-item open">
-        <button class="accordion-trigger" onclick="toggleAccordion(this)">
-          <div class="accordion-trigger-left">
-            <span class="acc-icon">🍳</span>
-            <span class="acc-label">Kitchen</span>
-          </div>
-          <span class="acc-arrow">▼</span>
-        </button>
-        <div class="accordion-body">
-          <strong>Cooking tools:</strong> All basic cooking tools are available inside the cabinets — feel free to use them.<br><br>
-          <strong>Important:</strong> Please do not leave dirty plates and utensils in the sink, as this may attract unwanted pests and insects. Do not open cabinets with locks, as we used them for storage of cleaning tools.<br><br>
-          <strong>Trash:</strong> Please dispose of your garbage in the <strong>garbage room near the elevators</strong>.
-        </div>
+        <button class="accordion-trigger" onclick="toggleAccordion(this)" aria-expanded="true"><div class="accordion-trigger-left"><span class="acc-icon">🍳</span><span class="acc-label">Kitchen</span></div><span class="acc-toggle">+</span></button>
+        <div class="accordion-body open"><div class="accordion-body-inner"><strong style="color:var(--text)">Cooking tools:</strong> All basic cooking tools are available inside the cabinets — feel free to use them.<br><br><strong style="color:var(--text)">Important:</strong> Please do not leave dirty plates and utensils in the sink, as this may attract unwanted pests and insects. Do not open cabinets with locks, as we used them for storage of cleaning tools.<br><br><strong style="color:var(--text)">Trash:</strong> Please dispose of your garbage in the <strong>garbage room near the elevators</strong>.</div></div>
       </div>
-
       <div class="accordion-item open">
-        <button class="accordion-trigger" onclick="toggleAccordion(this)">
-          <div class="accordion-trigger-left">
-            <span class="acc-icon">🛏️</span>
-            <span class="acc-label">Bedrooms</span>
-          </div>
-          <span class="acc-arrow">▼</span>
-        </button>
-        <div class="accordion-body">
-          <strong>Bed:</strong> Queen size bed with 4 pillows and duvet<br><br>
-          <strong>Towels:</strong> Fresh towels are provided and placed on top of the bed.
-        </div>
+        <button class="accordion-trigger" onclick="toggleAccordion(this)" aria-expanded="true"><div class="accordion-trigger-left"><span class="acc-icon">🛏️</span><span class="acc-label">Bedrooms</span></div><span class="acc-toggle">+</span></button>
+        <div class="accordion-body open"><div class="accordion-body-inner"><strong style="color:var(--text)">Bed:</strong> Queen size bed with 4 pillows and duvet<br><br><strong style="color:var(--text)">Towels:</strong> Fresh towels are provided and placed on top of the bed.</div></div>
       </div>
-
       <div class="accordion-item open">
-        <button class="accordion-trigger" onclick="toggleAccordion(this)">
-          <div class="accordion-trigger-left">
-            <span class="acc-icon">🚿</span>
-            <span class="acc-label">Bathroom</span>
-          </div>
-          <span class="acc-arrow">▼</span>
-        </button>
-        <div class="accordion-body">
-          <strong>Shower:</strong> Hot water comes from the telephone shower head, turn the knob to redirect the water. Adjust the heater thru the separate heater box located on top of the shower.<br><br>
-          <strong>Supplies:</strong> Shampoo, conditioner, body wash, and hair dryer are provided.<br><br>
-          <strong>Toilet:</strong> Please don't flush wipes or paper towels or anything — trash bin is provided for these.
-        </div>
+        <button class="accordion-trigger" onclick="toggleAccordion(this)" aria-expanded="true"><div class="accordion-trigger-left"><span class="acc-icon">🚿</span><span class="acc-label">Bathroom</span></div><span class="acc-toggle">+</span></button>
+        <div class="accordion-body open"><div class="accordion-body-inner"><strong style="color:var(--text)">Shower:</strong> Hot water comes from the telephone shower head, turn the knob to redirect the water. Adjust the heater thru the separate heater box located on top of the shower.<br><br><strong style="color:var(--text)">Supplies:</strong> Shampoo, conditioner, body wash, and hair dryer are provided.<br><br><strong style="color:var(--text)">Toilet:</strong> Please don't flush wipes or paper towels or anything — trash bin is provided for these.</div></div>
       </div>
-
       <div class="accordion-item open">
-        <button class="accordion-trigger" onclick="toggleAccordion(this)">
-          <div class="accordion-trigger-left">
-            <span class="acc-icon">🏊</span>
-            <span class="acc-label">Swimming Pool (8th Floor)</span>
-          </div>
-          <span class="acc-arrow">▼</span>
-        </button>
-        <div class="accordion-body">
-          <strong>Location:</strong> The swimming pool is located on the <strong>8th floor</strong> of the building.<br><br>
-          <strong>Access Fee:</strong> Please note that there is a pool access fee:<br>
-          &bull; <strong>Regular Days:</strong> ₱150 per person<br>
-          &bull; <strong>Holidays:</strong> ₱300 per person<br><br>
-          Please message us at least a day before you plan to use the pool so we can arrange your pass in advance.
-        </div>
+        <button class="accordion-trigger" onclick="toggleAccordion(this)" aria-expanded="true"><div class="accordion-trigger-left"><span class="acc-icon">🏊</span><span class="acc-label">Swimming Pool (8th Floor)</span></div><span class="acc-toggle">+</span></button>
+        <div class="accordion-body open"><div class="accordion-body-inner"><strong style="color:var(--text)">Location:</strong> The swimming pool is located on the <strong>8th floor</strong> of the building.<br><br><strong style="color:var(--text)">Access Fee:</strong> Please note that there is a pool access fee:<br>• <strong>Regular Days:</strong> ₱150 per person<br>• <strong>Holidays:</strong> ₱300 per person<br><br>Please message us at least a day before you plan to use the pool so we can arrange your pass in advance.</div></div>
       </div>
-
       <div class="accordion-item open">
-        <button class="accordion-trigger" onclick="toggleAccordion(this)">
-          <div class="accordion-trigger-left">
-            <span class="acc-icon">🧘</span>
-            <span class="acc-label">Other Amenities (7th &amp; 8th Floor)</span>
-          </div>
-          <span class="acc-arrow">▼</span>
-        </button>
-        <div class="accordion-body">
-          The following amenities are available for your use and are located on the <strong>7th and 8th floors</strong> of the building:<br><br>
-          &bull; <strong>Yoga Area</strong> — perfect for morning stretches and relaxation sessions<br>
-          &bull; <strong>Study Area</strong> — a quiet space for work or focused study<br>
-          &bull; <strong>Playground</strong> — available for younger guests and families<br><br>
-          Please be considerate of other residents when using shared amenity spaces.
-        </div>
+        <button class="accordion-trigger" onclick="toggleAccordion(this)" aria-expanded="true"><div class="accordion-trigger-left"><span class="acc-icon">🧘</span><span class="acc-label">Other Amenities (7th &amp; 8th Floor)</span></div><span class="acc-toggle">+</span></button>
+        <div class="accordion-body open"><div class="accordion-body-inner">The following amenities are available for your use and are located on the <strong>7th and 8th floors</strong> of the building:<br><br>• <strong>Yoga Area</strong> — perfect for morning stretches and relaxation sessions<br>• <strong>Study Area</strong> — a quiet space for work or focused study<br>• <strong>Playground</strong> — available for younger guests and families<br><br>Please be considerate of other residents when using shared amenity spaces.</div></div>
       </div>
-
     </div>
+  </div>
 
-  </div><!-- /sec-home -->
-
-  <!-- ── WI-FI ──────────────────────────────────────────────── -->
+  <!-- WIFI -->
   <div class="section" id="sec-wifi">
-
-    <div class="card card-blue">
-      <div class="card-title">📶 Wi-Fi Details</div>
-      <div class="info-row">
-        <div class="info-icon">📡</div>
-        <div style="flex:1">
-          <div class="info-label">Network Name (SSID)</div>
-          <div class="info-val" style="display:flex;align-items:center;flex-wrap:wrap;gap:4px">
-            WOOFY9049_2.4G
-            <span class="copy-wrap">
-              <button class="copy-btn" onclick="copyText('WOOFY9049_2.4G', this)">Copy</button>
-              <span class="copy-toast">Copied!</span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="info-row">
-        <div class="info-icon">🔒</div>
-        <div style="flex:1">
-          <div class="info-label">Password</div>
-          <div class="info-val" style="display:flex;align-items:center;flex-wrap:wrap;gap:4px">
-            78303b20adfd
-            <span class="copy-wrap">
-              <button class="copy-btn" onclick="copyText('78303b20adfd', this)">Copy</button>
-              <span class="copy-toast">Copied!</span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="info-row">
-        <div class="info-icon">⚡</div>
-        <div>
-          <div class="info-label">Speed</div>
-          <div class="info-val">50 Mbps — great for streaming &amp; video calls</div>
-        </div>
-      </div>
-    </div>
-
     <div class="card">
-      <div class="card-title">📺 Streaming &amp; Entertainment</div>
+      <div class="card-title">Wi-Fi Details</div>
+      <div class="info-row"><span class="info-icon">📡</span><div><div class="info-label">Network Name (SSID)</div><div class="info-val" style="display:flex;align-items:center;flex-wrap:wrap;gap:8px">WOOFY9049_2.4G <span class="copy-wrap"><button class="copy-btn" onclick="copyText('WOOFY9049_2.4G', this)">Copy</button><span class="copy-toast">Copied!</span></span></div></div></div>
+      <div class="info-row"><span class="info-icon">🔒</span><div><div class="info-label">Password</div><div class="info-val" style="display:flex;align-items:center;flex-wrap:wrap;gap:8px">78303b20adfd <span class="copy-wrap"><button class="copy-btn" onclick="copyText('78303b20adfd', this)">Copy</button><span class="copy-toast">Copied!</span></span></div></div></div>
+      <div class="info-row"><span class="info-icon">⚡</span><div><div class="info-label">Speed</div><div class="info-val">50 Mbps — great for streaming &amp; video calls</div></div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Streaming &amp; Entertainment</div>
       <div class="accordion-item open">
-        <button class="accordion-trigger" onclick="toggleAccordion(this)">
-          <div class="accordion-trigger-left">
-            <span class="acc-icon">🎬</span>
-            <span class="acc-label">TV Streaming Apps</span>
-          </div>
-          <span class="acc-arrow">▼</span>
-        </button>
-        <div class="accordion-body">
-          <strong>Netflix</strong> is logged in and ready. Please do not log out or change account settings.<br><br>
-          In case it is not logged in, please message us so we can assist you.
-        </div>
+        <button class="accordion-trigger" onclick="toggleAccordion(this)" aria-expanded="true"><div class="accordion-trigger-left"><span class="acc-icon">🎬</span><span class="acc-label">TV Streaming Apps</span></div><span class="acc-toggle">+</span></button>
+        <div class="accordion-body open"><div class="accordion-body-inner"><strong style="color:var(--text)">Netflix</strong> is logged in and ready. Please do not log out or change account settings.<br><br>In case it is not logged in, please message us so we can assist you.</div></div>
       </div>
     </div>
+  </div>
 
-  </div><!-- /sec-wifi -->
-
-  <!-- ── RULES ──────────────────────────────────────────────── -->
+  <!-- RULES -->
   <div class="section" id="sec-rules">
-
+    <div class="card"><div class="card-title">What's Allowed</div><div class="rules-grid"><div class="rule-tag allowed">🥂 Drinks</div><div class="rule-tag allowed">🍛 Outside food</div><div class="rule-tag allowed">🥘 Light cooking</div><div class="rule-tag allowed">🏖️ Pool (with fee)</div><div class="rule-tag allowed">🏃 Amenity use</div><div class="rule-tag allowed">👤 Visitor (until 10pm)</div></div></div>
+    <div class="card"><div class="card-title">House Rules</div><div class="rules-grid"><div class="rule-tag disallowed">🚬 NO SMOKING (₱5,000 FINE)</div><div class="rule-tag disallowed">🎉 No parties/events</div><div class="rule-tag disallowed">🔊 Quiet after 10 PM</div><div class="rule-tag disallowed">👥 Guests listed only</div><div class="rule-tag disallowed">🎥 No cameras indoors</div><div class="rule-tag disallowed">🐕 No pets allowed</div></div></div>
     <div class="card">
-      <div class="card-title">✅ What's Allowed</div>
-      <div class="rules-grid">
-        <div class="rule-tag allowed"><span class="rt-icon">🥂</span> Drinks</div>
-        <div class="rule-tag allowed"><span class="rt-icon">🍛</span> Outside food</div>
-        <div class="rule-tag allowed"><span class="rt-icon">🥘</span> Light cooking</div>
-        <div class="rule-tag allowed"><span class="rt-icon">🏖️</span> Pool (with fee)</div>
-        <div class="rule-tag allowed"><span class="rt-icon">🏃</span> Amenity use</div>
-        <div class="rule-tag allowed"><span class="rt-icon">👤</span> Visitor (until 10pm)</div>
-      </div>
+      <div class="card-title">Quiet Hours &amp; Neighbors</div>
+      <div class="info-row"><span class="info-icon">🔇</span><div><div class="info-label">Quiet Hours</div><div class="info-val" style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--sage)">10:00 PM – 8:00 AM</div></div></div>
+      <div class="info-row"><span class="info-icon">🏢</span><div><div class="info-label">Building Notes</div><div class="info-val">Please note that this is a residential building, NOT A HOTEL establishment. We ask that you respect our neighbors by keeping voices low in hallways and common areas.</div></div></div>
     </div>
-
     <div class="card">
-      <div class="card-title">🚫 House Rules</div>
-      <div class="rules-grid">
-        <div class="rule-tag disallowed"><span class="rt-icon">🚬</span> NO SMOKING (₱5,000 FINE)</div>
-        <div class="rule-tag disallowed"><span class="rt-icon">🎉</span> No parties/events</div>
-        <div class="rule-tag disallowed"><span class="rt-icon">🔊</span> Quiet after 10 PM</div>
-        <div class="rule-tag disallowed"><span class="rt-icon">👥</span> Guests listed only</div>
-        <div class="rule-tag disallowed"><span class="rt-icon">🎥</span> No cameras indoors</div>
-        <div class="rule-tag disallowed"><span class="rt-icon">🐕</span> No pets allowed</div>
-      </div>
+      <div class="card-title">Emergency Info</div>
+      <div class="info-row"><span class="info-icon">🧯</span><div><div class="info-label">Fire Extinguisher</div><div class="info-val">Next to the refrigerator. Smoke detectors are in every room — do not cover or remove.</div></div></div>
+      <div class="info-row"><span class="info-icon">🚨</span><div><div class="info-label">Emergency Exit</div><div class="info-val">Use the stairwell — <strong>do not use the elevator</strong> during a fire. Emergency exit at the end of the elevators/hallway.</div></div></div>
     </div>
+  </div>
 
-    <div class="card">
-      <div class="card-title">🌙 Quiet Hours &amp; Neighbors</div>
-      <div class="info-row">
-        <div class="info-icon">🔇</div>
-        <div>
-          <div class="info-label">Quiet Hours</div>
-          <div class="info-val">10:00 PM – 8:00 AM</div>
-        </div>
-      </div>
-      <div class="info-row">
-        <div class="info-icon">🏢</div>
-        <div>
-          <div class="info-label">Building Notes</div>
-          <div class="info-val">Please note that this is a residential building, NOT A HOTEL establishment. We ask that you respect our neighbors by keeping voices low in hallways and common areas.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">🔥 Emergency Info</div>
-      <div class="info-row">
-        <div class="info-icon">🧯</div>
-        <div>
-          <div class="info-label">Fire Extinguisher</div>
-          <div class="info-val">Next to the refrigerator. Smoke detectors are in every room — do not cover or remove.</div>
-        </div>
-      </div>
-      <div class="info-row">
-        <div class="info-icon">🚨</div>
-        <div>
-          <div class="info-label">Emergency Exit</div>
-          <div class="info-val">Use the stairwell — <strong>do not use the elevator</strong> during a fire. Emergency exit at the end of the elevators/hallway.</div>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /sec-rules -->
-
-  <!-- ── NEIGHBORHOOD ──────────────────────────────────────── -->
+  <!-- NEIGHBORHOOD -->
   <div class="section" id="sec-neighborhood">
-
     <div class="card">
-      <div class="card-title">📍 Explore the Area</div>
-
-      <a href="https://maps.app.goo.gl/zodkk2JAYzsny3j49" class="map-placeholder">
-        <span>🗺️</span>
-        <span>Open Full Map</span>
-      </a>
-
+      <div class="card-title">Explore the Area</div>
+      <a href="https://maps.app.goo.gl/zodkk2JAYzsny3j49" class="map-link">🗺️ Open Full Map</a>
       <div class="accordion-item open">
-        <button class="accordion-trigger" onclick="toggleAccordion(this)">
-          <div class="accordion-trigger-left"><span class="acc-icon">☕</span><span class="acc-label">Coffee &amp; Breakfast</span></div>
-          <span class="acc-arrow">▼</span>
-        </button>
-        <div class="accordion-body">
-          <div class="place-item">
-            <span class="place-icon">☕</span>
-            <div class="place-info"><div class="place-name">Zus Coffee</div><div class="place-meta">We personally recommend this</div></div>
-            <span class="place-dist">220 m</span>
-          </div>
-          <div class="place-item">
-            <span class="place-icon">🥐</span>
-            <div class="place-info"><div class="place-name">Breadtalk</div><div class="place-meta">Our go-to bakery shop</div></div>
-            <span class="place-dist">220 m</span>
-          </div>
-        </div>
+        <button class="accordion-trigger" onclick="toggleAccordion(this)" aria-expanded="true"><div class="accordion-trigger-left"><span class="acc-icon">☕</span><span class="acc-label">Coffee &amp; Breakfast</span></div><span class="acc-toggle">+</span></button>
+        <div class="accordion-body open"><div class="accordion-body-inner"><div class="place-item"><span class="place-icon">☕</span><div class="place-info"><div class="place-name">Zus Coffee</div><div class="place-meta">We personally recommend this</div></div><span class="place-dist">220 m</span></div><div class="place-item"><span class="place-icon">🥐</span><div class="place-info"><div class="place-name">Breadtalk</div><div class="place-meta">Our go-to bakery shop</div></div><span class="place-dist">220 m</span></div></div></div>
       </div>
-
       <div class="accordion-item open">
-        <button class="accordion-trigger" onclick="toggleAccordion(this)">
-          <div class="accordion-trigger-left"><span class="acc-icon">🍽️</span><span class="acc-label">Restaurants</span></div>
-          <span class="acc-arrow">▼</span>
-        </button>
-        <div class="accordion-body">
-          <div class="place-item">
-            <span class="place-icon">🥘</span>
-            <div class="place-info"><div class="place-name">Recipe's by Cafe Metro</div><div class="place-meta">Filipino cuisines — our go-to restaurant</div></div>
-            <span class="place-dist">220 m</span>
-          </div>
-          <div class="place-item">
-            <span class="place-icon">🍜</span>
-            <div class="place-info"><div class="place-name">Nanyang</div><div class="place-meta">Singaporean inspired restaurant and cafe</div></div>
-            <span class="place-dist">220 m</span>
-          </div>
-          <div class="place-item">
-            <span class="place-icon">🍙</span>
-            <div class="place-info"><div class="place-name">Yuki</div><div class="place-meta">Japanese food</div></div>
-            <span class="place-dist">220 m</span>
-          </div>
-        </div>
+        <button class="accordion-trigger" onclick="toggleAccordion(this)" aria-expanded="true"><div class="accordion-trigger-left"><span class="acc-icon">🍽️</span><span class="acc-label">Restaurants</span></div><span class="acc-toggle">+</span></button>
+        <div class="accordion-body open"><div class="accordion-body-inner"><div class="place-item"><span class="place-icon">🥘</span><div class="place-info"><div class="place-name">Recipe's by Cafe Metro</div><div class="place-meta">Filipino cuisines — our go-to restaurant</div></div><span class="place-dist">220 m</span></div><div class="place-item"><span class="place-icon">🍜</span><div class="place-info"><div class="place-name">Nanyang</div><div class="place-meta">Singaporean inspired restaurant and cafe</div></div><span class="place-dist">220 m</span></div><div class="place-item"><span class="place-icon">🍙</span><div class="place-info"><div class="place-name">Yuki</div><div class="place-meta">Japanese food</div></div><span class="place-dist">220 m</span></div></div></div>
       </div>
-
       <div class="accordion-item open">
-        <button class="accordion-trigger" onclick="toggleAccordion(this)">
-          <div class="accordion-trigger-left"><span class="acc-icon">🛒</span><span class="acc-label">Groceries &amp; Essentials (right below the building)</span></div>
-          <span class="acc-arrow">▼</span>
-        </button>
-        <div class="accordion-body">
-          <div class="place-item">
-            <span class="place-icon">🛒</span>
-            <div class="place-info"><div class="place-name">Savemore</div><div class="place-meta">Open 10 AM – 9 PM</div></div>
-            <span class="place-dist">0 m</span>
-          </div>
-          <div class="place-item">
-            <span class="place-icon">💊</span>
-            <div class="place-info"><div class="place-name">Watsons Pharmacy</div><div class="place-meta">24 hours</div></div>
-            <span class="place-dist">0 m</span>
-          </div>
-        </div>
+        <button class="accordion-trigger" onclick="toggleAccordion(this)" aria-expanded="true"><div class="accordion-trigger-left"><span class="acc-icon">🛒</span><span class="acc-label">Groceries &amp; Essentials (right below the building)</span></div><span class="acc-toggle">+</span></button>
+        <div class="accordion-body open"><div class="accordion-body-inner"><div class="place-item"><span class="place-icon">🛒</span><div class="place-info"><div class="place-name">Savemore</div><div class="place-meta">Open 10 AM – 9 PM</div></div><span class="place-dist">0 m</span></div><div class="place-item"><span class="place-icon">💊</span><div class="place-info"><div class="place-name">Watsons Pharmacy</div><div class="place-meta">24 hours</div></div><span class="place-dist">0 m</span></div></div></div>
       </div>
-
       <div class="accordion-item open">
-        <button class="accordion-trigger" onclick="toggleAccordion(this)">
-          <div class="accordion-trigger-left"><span class="acc-icon">🏤</span><span class="acc-label">Malls &amp; Activities</span></div>
-          <span class="acc-arrow">▼</span>
-        </button>
-        <div class="accordion-body">
-          <div class="place-item">
-            <span class="place-icon">🏤</span>
-            <div class="place-info"><div class="place-name">SM Mall of Asia</div><div class="place-meta">Biggest mall in the Philippines</div></div>
-            <span class="place-dist">6.7 km</span>
-          </div>
-          <div class="place-item">
-            <span class="place-icon">🚲</span>
-            <div class="place-info"><div class="place-name">Salcedo Park</div><div class="place-meta">Worth a walk around</div></div>
-            <span class="place-dist">2.3 km</span>
-          </div>
-          <div class="place-item">
-            <span class="place-icon">🎨</span>
-            <div class="place-info"><div class="place-name">Ayala Museum</div><div class="place-meta">Worth a look</div></div>
-            <span class="place-dist">1.6 km</span>
-          </div>
-        </div>
+        <button class="accordion-trigger" onclick="toggleAccordion(this)" aria-expanded="true"><div class="accordion-trigger-left"><span class="acc-icon">🏤</span><span class="acc-label">Malls &amp; Activities</span></div><span class="acc-toggle">+</span></button>
+        <div class="accordion-body open"><div class="accordion-body-inner"><div class="place-item"><span class="place-icon">🏤</span><div class="place-info"><div class="place-name">SM Mall of Asia</div><div class="place-meta">Biggest mall in the Philippines</div></div><span class="place-dist">6.7 km</span></div><div class="place-item"><span class="place-icon">🚲</span><div class="place-info"><div class="place-name">Salcedo Park</div><div class="place-meta">Worth a walk around</div></div><span class="place-dist">2.3 km</span></div><div class="place-item"><span class="place-icon">🎨</span><div class="place-info"><div class="place-name">Ayala Museum</div><div class="place-meta">Worth a look</div></div><span class="place-dist">1.6 km</span></div></div></div>
       </div>
-
       <div class="accordion-item open">
-        <button class="accordion-trigger" onclick="toggleAccordion(this)">
-          <div class="accordion-trigger-left"><span class="acc-icon">🚗</span><span class="acc-label">Getting Around</span></div>
-          <span class="acc-arrow">▼</span>
-        </button>
-        <div class="accordion-body">
-          <strong>Grab / InDrive</strong> — Best rates. For fixed rates, we highly recommend riding through this app compared to traditional taxis.<br><br>
-          <strong>Parking tip:</strong> Mall pay parking is open 24/7 but it is first-come-first-serve basis. You may check pay parking at Assembly Grounds — the nearest pay parking to Air Residences.
-        </div>
+        <button class="accordion-trigger" onclick="toggleAccordion(this)" aria-expanded="true"><div class="accordion-trigger-left"><span class="acc-icon">🚗</span><span class="acc-label">Getting Around</span></div><span class="acc-toggle">+</span></button>
+        <div class="accordion-body open"><div class="accordion-body-inner"><strong style="color:var(--text)">Grab / InDrive</strong> — Best rates. For fixed rates, we highly recommend riding through this app compared to traditional taxis.<br><br><strong style="color:var(--text)">Parking tip:</strong> Mall pay parking is open 24/7 but it is first-come-first-serve basis. You may check pay parking at Assembly Grounds — the nearest pay parking to Air Residences.</div></div>
       </div>
-
     </div>
+  </div>
 
-  </div><!-- /sec-neighborhood -->
-
-  <!-- ── CONTACT ────────────────────────────────────────────── -->
+  <!-- CONTACT -->
   <div class="section" id="sec-contact">
-
-    <a href="tel:911" class="sos-banner animate-in">
-      <span class="sos-icon">🚨</span>
-      <div>
-        <div class="sos-title">Emergency — Call 911</div>
-        <div class="sos-sub">Tap to call emergency services</div>
-      </div>
-    </a>
-
+    <a href="tel:911" class="sos-banner"><span class="sos-icon">🚨</span><div><div class="sos-title">Emergency — Call 911</div><div class="sos-sub">Tap to call emergency services</div></div></a>
     <div class="card">
-      <div class="card-title">👋 Your Host Team</div>
-
-      <div class="contact-card">
-        <div class="contact-left">
-          <div class="contact-avatar">😊</div>
-          <div>
-            <div class="contact-name">Joshua Natividad</div>
-            <div class="contact-role">Your Host — available 24/7</div>
-          </div>
-        </div>
-        <div class="contact-actions">
-          <a href="sms:+639662775947" class="contact-btn btn-msg" title="Message">💬</a>
-          <a href="tel:+639662775947" class="contact-btn btn-call" title="Call">📞</a>
-        </div>
-      </div>
-
-      <div class="contact-card">
-        <div class="contact-left">
-          <div class="contact-avatar">😊</div>
-          <div>
-            <div class="contact-name">John Araullo</div>
-            <div class="contact-role">Your Host — available 24/7</div>
-          </div>
-        </div>
-        <div class="contact-actions">
-          <a href="sms:+639561357653" class="contact-btn btn-msg" title="Message">💬</a>
-          <a href="tel:+639561357653" class="contact-btn btn-call" title="Call">📞</a>
-        </div>
-      </div>
-
+      <div class="card-title">Your Host Team</div>
+      <div class="contact-card"><div class="contact-left"><div class="contact-avatar">😊</div><div><div class="contact-name">Joshua Natividad</div><div class="contact-role">Your Host — available 24/7</div></div></div><div class="contact-actions"><a href="sms:+639662775947" class="contact-btn">💬</a><a href="tel:+639662775947" class="contact-btn">📞</a></div></div>
+      <div class="contact-card"><div class="contact-left"><div class="contact-avatar">😊</div><div><div class="contact-name">John Araullo</div><div class="contact-role">Your Host — available 24/7</div></div></div><div class="contact-actions"><a href="sms:+639561357653" class="contact-btn">💬</a><a href="tel:+639561357653" class="contact-btn">📞</a></div></div>
     </div>
-
     <div class="card">
-      <div class="card-title">🆘 Local Emergency Services</div>
-      <div class="contact-card">
-        <div class="contact-left">
-          <div class="contact-avatar" style="background:linear-gradient(135deg,#fff2f0,#ffd5d2)">🏥</div>
-          <div>
-            <div class="contact-name">Makati Medical City</div>
-            <div class="contact-role">Nearest hospital — 500 meters</div>
-          </div>
-        </div>
-        <div class="contact-actions">
-          <a href="tel:+63288888910" class="contact-btn btn-call" title="Call">📞</a>
-        </div>
-      </div>
-      <div class="contact-card">
-        <div class="contact-left">
-          <div class="contact-avatar" style="background:linear-gradient(135deg,#eff6ff,#dbeafe)">🚓</div>
-          <div>
-            <div class="contact-name">Makati City Central Police Station</div>
-            <div class="contact-role">Non-urgent police matters</div>
-          </div>
-        </div>
-        <div class="contact-actions">
-          <a href="tel:028872484" class="contact-btn btn-call" title="Call">📞</a>
-        </div>
-      </div>
+      <div class="card-title">Local Emergency Services</div>
+      <div class="contact-card"><div class="contact-left"><div class="contact-avatar" style="background:linear-gradient(135deg,#fde8e8,#fbd5d5)">🏥</div><div><div class="contact-name">Makati Medical City</div><div class="contact-role">Nearest hospital — 500 meters</div></div></div><div class="contact-actions"><a href="tel:+63288888910" class="contact-btn">📞</a></div></div>
+      <div class="contact-card"><div class="contact-left"><div class="contact-avatar" style="background:linear-gradient(135deg,#eff6ff,#dbeafe)">🚓</div><div><div class="contact-name">Makati City Central Police Station</div><div class="contact-role">Non-urgent police matters</div></div></div><div class="contact-actions"><a href="tel:028872484" class="contact-btn">📞</a></div></div>
     </div>
-
     <div class="card">
-      <div class="card-title">💌 Leave a Review</div>
-      <p style="font-size:14px;color:var(--body);margin-bottom:4px;line-height:1.65">We hope you enjoy your stay! As a small business owner here in the Philippines, your review really matters to us. It helps boost our small growing business. ⭐</p>
-      <a href="https://airbnb.com/" class="cta-btn cta-primary">⭐ Leave a Review on Airbnb</a>
+      <div class="card-title">Leave a Review</div>
+      <p style="font-size:14px;color:var(--text-dim);margin-bottom:16px;line-height:1.8">We hope you enjoy your stay! As a small business owner here in the Philippines, your review really matters to us. It helps boost our small growing business. ⭐</p>
+      <a href="https://airbnb.com/" class="cta-btn">⭐ Leave a Review on Airbnb</a>
     </div>
+  </div>
 
-  </div><!-- /sec-contact -->
-
-  <!-- ── CHECK-OUT ──────────────────────────────────────────── -->
+  <!-- CHECKOUT -->
   <div class="section" id="sec-checkout">
-
     <div class="card">
-      <div class="card-title">🧳 Check-out Time</div>
-      <div class="info-row">
-        <div class="info-icon">⏰</div>
-        <div>
-          <div class="info-label">Check-out By</div>
-          <div class="info-val" style="font-size:28px;font-weight:700;color:var(--blue);letter-spacing:-1px">12:00 PM</div>
-        </div>
-      </div>
-      <div class="info-row">
-        <div class="info-icon">🔑</div>
-        <div>
-          <div class="info-label">Keys / Access</div>
-          <div class="info-val">Please return the key to the <strong>mailbox</strong> before you leave.</div>
-        </div>
-      </div>
+      <div class="card-title">Check-out Time</div>
+      <div class="info-row"><span class="info-icon">⏰</span><div><div class="info-label">Check-out By</div><div class="info-val" style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:var(--sage)">12:00 PM</div></div></div>
+      <div class="info-row"><span class="info-icon">🔑</span><div><div class="info-label">Keys / Access</div><div class="info-val">Please return the key to the <strong>mailbox</strong> before you leave.</div></div></div>
     </div>
-
     <div class="card">
-      <div class="card-title">✅ Departure Checklist</div>
-      <div id="checklistItems"></div>
-      <div class="progress-wrap">
-        <div class="progress-label">
-          <span id="progressText">0 of 10 completed</span>
-          <span id="progressPct">0%</span>
-        </div>
-        <div class="progress-track">
-          <div class="progress-fill" id="progressFill" style="width:0%"></div>
-        </div>
-        <div id="checklistComplete" class="progress-complete" style="display:none">🎉 All done — have a safe trip!</div>
+      <div class="card-title">Departure Checklist</div>
+      <div id="checklistItems">
+        <label class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox" id="item_0"><span class="check-box"></span><span class="check-label">Wash used dishes and utensils</span></label>
+        <label class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox" id="item_1"><span class="check-box"></span><span class="check-label">Turn off all appliances (except refrigerator and Wi-Fi router)</span></label>
+        <label class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox" id="item_2"><span class="check-box"></span><span class="check-label">Leave used towels in the bathroom</span></label>
+        <label class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox" id="item_3"><span class="check-box"></span><span class="check-label">Empty all trash bins and throw them in the garbage room near the elevators</span></label>
+        <label class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox" id="item_4"><span class="check-box"></span><span class="check-label">Close and lock all windows</span></label>
+        <label class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox" id="item_5"><span class="check-box"></span><span class="check-label">Return items to their original place</span></label>
+        <label class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox" id="item_6"><span class="check-box"></span><span class="check-label">Make sure no personal belongings are left behind</span></label>
+        <label class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox" id="item_7"><span class="check-box"></span><span class="check-label">Lock the door 🚪</span></label>
+        <label class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox" id="item_8"><span class="check-box"></span><span class="check-label">Return the keys to the mailbox 🔑</span></label>
+        <label class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox" id="item_9"><span class="check-box"></span><span class="check-label">Message us with a picture of the key inside the mailbox 📩</span></label>
       </div>
+      <div class="checklist-progress" id="checklistProgress">0 of 10 completed</div>
     </div>
-
     <div class="card">
-      <div class="card-title">💬 Before You Leave</div>
-      <p style="font-size:14px;color:var(--body);margin-bottom:4px;line-height:1.65">It was a pleasure hosting you! We hope you had an amazing time in Makati. Safe travels! Book with us again to get <strong>10% DISCOUNT</strong>.</p>
-      <a href="https://airbnb.com/" class="cta-btn cta-primary">⭐ Leave a Review</a>
-      <a href="http://m.me/casachicomakati" class="cta-btn cta-gold" style="margin-top:8px">✨ Book Again — 10% Off ✨</a>
+      <div class="card-title">Before You Leave</div>
+      <p style="font-size:14px;color:var(--text-dim);margin-bottom:16px;line-height:1.8">It was a pleasure hosting you! We hope you had an amazing time in Makati. Safe travels! Book with us again to get <strong>10% DISCOUNT</strong>.</p>
+      <a href="https://airbnb.com/" class="cta-btn">⭐ Leave a Review</a>
+      <a href="http://m.me/casachicomakati" class="cta-btn cta-teal">✨ ✨ Book Again ✨ ✨</a>
     </div>
+  </div>
 
-  </div><!-- /sec-checkout -->
+</div>
 
-</div><!-- /container -->
-
-<!-- ── BOTTOM NAV ─────────────────────────────────────────── -->
 <nav class="bottom-nav">
-  <button class="bn-item active" onclick="showSection('arrival')" id="bn-arrival">
-    <span class="bn-icon">🔑</span>Arrival
-  </button>
-  <button class="bn-item" onclick="showSection('home')" id="bn-home">
-    <span class="bn-icon">🏠</span>Home
-  </button>
-  <button class="bn-item" onclick="showSection('wifi')" id="bn-wifi">
-    <span class="bn-icon">📶</span>Wi-Fi
-  </button>
-  <button class="bn-item" onclick="showSection('neighborhood')" id="bn-neighborhood">
-    <span class="bn-icon">📍</span>Area
-  </button>
-  <button class="bn-item" onclick="showSection('contact')" id="bn-contact">
-    <span class="bn-icon">💬</span>Contact
-  </button>
+  <button class="bn-item active" onclick="showSection('arrival')" id="bn-arrival"><span class="bn-icon">🔑</span>Arrival</button>
+  <button class="bn-item" onclick="showSection('home')" id="bn-home"><span class="bn-icon">🏠</span>Home</button>
+  <button class="bn-item" onclick="showSection('wifi')" id="bn-wifi"><span class="bn-icon">📶</span>Wi-Fi</button>
+  <button class="bn-item" onclick="showSection('neighborhood')" id="bn-neighborhood"><span class="bn-icon">📍</span>Area</button>
+  <button class="bn-item" onclick="showSection('contact')" id="bn-contact"><span class="bn-icon">💬</span>Contact</button>
 </nav>
 
 <script>
-  // ── Smooth Tab Switching ─────────────────────────────────
+  const animObserver = new IntersectionObserver((entries) => {
+    entries.forEach(el => { if (el.isIntersecting) { el.target.classList.add('in-view'); animObserver.unobserve(el.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.card').forEach(el => animObserver.observe(el));
+
   function showSection(id) {
     const current = document.querySelector('.section.visible');
     const next = document.getElementById('sec-' + id);
     if (!next || current === next) return;
-
     if (current) {
-      current.style.opacity = '0';
-      current.style.transform = 'translateY(16px)';
-      setTimeout(() => {
-        current.classList.remove('visible');
-        current.style.opacity = '';
-        current.style.transform = '';
-      }, 250);
+      current.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+      current.style.opacity = '0'; current.style.transform = 'translateY(10px)';
+      setTimeout(() => { current.classList.remove('visible'); current.style.cssText = ''; }, 200);
     }
-
     setTimeout(() => {
       next.classList.add('visible');
-      next.style.opacity = '0';
-      next.style.transform = 'translateY(16px)';
+      next.style.opacity = '0'; next.style.transform = 'translateY(10px)';
+      next.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
       requestAnimationFrame(() => requestAnimationFrame(() => {
-        next.style.opacity = '1';
-        next.style.transform = 'translateY(0)';
+        next.style.opacity = '1'; next.style.transform = 'translateY(0)';
+        setTimeout(() => { next.style.cssText = ''; }, 310);
       }));
+      next.querySelectorAll('.card').forEach(el => { el.classList.remove('in-view'); animObserver.observe(el); });
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      // Re-trigger scroll observer for new cards
-      triggerObserver();
-    }, 200);
-
-    // Update top nav tabs
-    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-    const activeTab = document.querySelector('[data-tab="' + id + '"]');
-    if (activeTab) {
-      activeTab.classList.add('active');
-      activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    }
-
-    // Update bottom nav — map rules/checkout to closest bottom nav item
-    const bnMap = { arrival:'arrival', home:'home', wifi:'wifi', rules:'arrival', neighborhood:'neighborhood', contact:'contact', checkout:'contact' };
+    }, 180);
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.toggle('active', (t.getAttribute('onclick') || '').includes("'" + id + "'")));
     document.querySelectorAll('.bn-item').forEach(b => b.classList.remove('active'));
-    const bnTarget = document.getElementById('bn-' + (bnMap[id] || id));
-    if (bnTarget) bnTarget.classList.add('active');
+    const navMap = { arrival:'arrival', home:'home', wifi:'wifi', rules:'arrival', neighborhood:'neighborhood', contact:'contact', checkout:'contact' };
+    const bnEl = document.getElementById('bn-' + (navMap[id] || id));
+    if (bnEl) bnEl.classList.add('active');
+    const activeTab = document.querySelector('.nav-tab.active');
+    if (activeTab) activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
 
-  // ── Accordion ────────────────────────────────────────────
   function toggleAccordion(trigger) {
-    trigger.closest('.accordion-item').classList.toggle('open');
+    const body = trigger.nextElementSibling;
+    if (!body) return;
+    const isOpen = body.classList.contains('open');
+    trigger.setAttribute('aria-expanded', !isOpen);
+    body.classList.toggle('open', !isOpen);
   }
 
-  // ── Copy to Clipboard ────────────────────────────────────
+  const STORAGE_KEY = 'checklistDone1116';
+  function updateProgress() {
+    const items = document.querySelectorAll('.checklist-item');
+    const done = [...items].filter(i => i.classList.contains('done')).length;
+    const el = document.getElementById('checklistProgress');
+    if (el) el.textContent = done + ' of ' + items.length + ' completed';
+  }
+  function toggleCheck(label) {
+    const cb = label.querySelector('input[type="checkbox"]');
+    if (!cb) return;
+    cb.checked = !cb.checked;
+    label.classList.toggle('done', cb.checked);
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    saved[cb.id] = cb.checked;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+    updateProgress();
+  }
+  function initChecklist() {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    document.querySelectorAll('.checklist-item').forEach(label => {
+      const cb = label.querySelector('input[type="checkbox"]');
+      if (cb && saved[cb.id]) { cb.checked = true; label.classList.add('done'); }
+    });
+    updateProgress();
+  }
+  initChecklist();
+
   function copyText(text, btn) {
     navigator.clipboard.writeText(text).then(() => {
       const toast = btn.nextElementSibling;
-      toast.classList.add('show');
-      btn.textContent = '✓ Copied';
-      setTimeout(() => {
-        toast.classList.remove('show');
-        btn.textContent = 'Copy';
-      }, 2000);
-    }).catch(() => {
-      // Fallback
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
-      btn.textContent = '✓ Copied';
-      setTimeout(() => btn.textContent = 'Copy', 2000);
-    });
+      if (toast && toast.classList.contains('copy-toast')) { toast.style.display = 'inline'; setTimeout(() => { toast.style.display = ''; }, 2000); }
+      const orig = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = orig; }, 2000);
+    }).catch(() => {});
   }
 
-  // ── IntersectionObserver scroll animations ───────────────
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(el => {
-      if (el.isIntersecting) el.target.classList.add('in-view');
+  document.addEventListener('DOMContentLoaded', () => {
+    const first = document.querySelector('.section.visible');
+    if (first) first.querySelectorAll('.card').forEach(el => animObserver.observe(el));
+    document.querySelectorAll('.accordion-item.open').forEach(item => {
+      const body = item.querySelector('.accordion-body');
+      const trigger = item.querySelector('.accordion-trigger');
+      if (body) body.classList.add('open');
+      if (trigger) trigger.setAttribute('aria-expanded', 'true');
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  });
 
-  function triggerObserver() {
-    document.querySelectorAll('.card, .animate-in').forEach(el => observer.observe(el));
-  }
-  triggerObserver();
-
-  // ── Departure Checklist ──────────────────────────────────
-  const checklistTasks = [
-    { id: 'c1',  text: 'Wash used dishes and utensils' },
-    { id: 'c2',  text: 'Turn off all appliances (except refrigerator and Wi-Fi router)' },
-    { id: 'c3',  text: 'Leave used towels in the bathroom' },
-    { id: 'c4',  text: 'Empty all trash bins and throw them in the garbage room near the elevators' },
-    { id: 'c5',  text: 'Close and lock all windows' },
-    { id: 'c6',  text: 'Return items to their original place' },
-    { id: 'c7',  text: 'Make sure no personal belongings are left behind' },
-    { id: 'c8',  text: 'Lock the door 🚪' },
-    { id: 'c9',  text: 'Return the keys to the mailbox 🔑' },
-    { id: 'c10', text: 'Message us with a picture of the key inside the mailbox 📩' },
-  ];
-
-  const STORAGE_KEY = 'checklistDone1116';
-  const completed = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'));
-
-  function renderChecklist() {
-    const container = document.getElementById('checklistItems');
-    container.innerHTML = '';
-
-    checklistTasks.forEach(task => {
-      const done = completed.has(task.id);
-      const item = document.createElement('div');
-      item.className = 'checklist-item' + (done ? ' done' : '');
-      item.innerHTML = `
-        <div class="check-box"></div>
-        <span class="check-label">${task.text}</span>
-      `;
-      item.onclick = () => {
-        if (completed.has(task.id)) completed.delete(task.id);
-        else completed.add(task.id);
-        localStorage.setItem(STORAGE_KEY, JSON.stringify([...completed]));
-        renderChecklist();
-      };
-      container.appendChild(item);
-    });
-
-    const n = completed.size;
-    const total = checklistTasks.length;
-    const pct = Math.round((n / total) * 100);
-
-    document.getElementById('progressText').textContent = n + ' of ' + total + ' completed';
-    document.getElementById('progressPct').textContent = pct + '%';
-    document.getElementById('progressFill').style.width = pct + '%';
-
-    const completeEl = document.getElementById('checklistComplete');
-    if (n === total) {
-      completeEl.style.display = 'block';
-      document.getElementById('progressText').style.display = 'none';
-      document.getElementById('progressPct').style.display = 'none';
-    } else {
-      completeEl.style.display = 'none';
-      document.getElementById('progressText').style.display = '';
-      document.getElementById('progressPct').style.display = '';
-    }
-  }
-
-  renderChecklist();
+  window.addEventListener('load', () => {
+    const ls = document.getElementById('loadingScreen');
+    if (!ls) return;
+    setTimeout(() => { ls.classList.add('fade-out'); setTimeout(() => ls.remove(), 700); }, 800);
+  });
 </script>
-
 </body>
 </html>
